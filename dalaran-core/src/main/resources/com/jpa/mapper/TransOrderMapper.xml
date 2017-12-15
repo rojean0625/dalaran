@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dalaran.mapper.TransOrderMapper">
+	<resultMap  id="TransOrder" type="com.dalaran.model.TransOrder">
+		<id column="id" property="id" />
+		<result column="optimistic" property="optimistic" />
+		<result column="pay_interface" property="payInterface" />
+		<result column="check_id" property="checkId" />
+		<result column="trans_amount" property="transAmount" />
+		<result column="bank_trans_time" property="transTime" />
+	</resultMap>
+
+	<sql id="commonColumn">
+		id,
+		optimistic,
+		pay_interface,
+		check_id,
+		trans_amount,
+		trans_time
+	</sql>
+
+	<select id="findByCheckId"  resultMap="TransOrder" parameterType="java.util.Map">
+		select <include refid="commonColumn"/> from ${tableName}  where 1=1 and check_id=#{checkId}
+	</select>
+
+
+	<insert id="insertTransOrder" parameterType="com.dalaran.model.TransOrder">
+		insert into trans_order (
+		<include refid="commonColumn" />
+		)
+		values(
+		#{id},
+		#{optimistic},
+		#{payInterface},
+		#{checkId},
+		#{transAmount},
+		#{transTime}
+		)
+	</insert>
+
+
+	<insert id="batchInsertTransOrder" parameterType="java.util.List">
+		insert into trans_order(
+	    <include refid="commonColumn" />
+	    )
+	    values
+	    <foreach item="item" collection="list" index="index" separator=",">
+	    (
+		#{item.id},
+		#{item.optimistic},
+		#{item.payInterface},
+		#{item.checkId},
+		#{item.transAmount},
+		#{item.transTime}
+	    )
+	    </foreach>
+
+	</insert>
+</mapper>

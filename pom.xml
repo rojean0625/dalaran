@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 公共资源引用  -->
+  <parent>
+    <groupId>com.dalaran</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+
+  <properties>
+	<dalaran-model.version>1.0.1</dalaran-model.version>
+	<dalaran-api.version>1.0.1</dalaran-api.version>
+	<dalaran-core.version>1.0.1</dalaran-core.version>
+	<dalaran-portal.version>1.0.1</dalaran-portal.version>
+  </properties>
+
+  <groupId>com.dalaran</groupId>
+  <artifactId>dalaran</artifactId>
+  <version>1.0.1</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>dalaran-api</module>
+    <module>dalaran-model</module>
+    <module>dalaran-core</module>
+    <module>dalaran-portal</module>
+  </modules>
+</project>

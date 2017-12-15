@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		<!--
+		<mapper resource="com/jpa/mapper/PageInfoMapper.xml"/>
+		-->
+		<mapper resource="com/jpa/mapper/BlackMapper.xml"/>
+		<mapper resource="com/jpa/mapper/WhiteMapper.xml"/>
+	</mappers>
+</configuration>

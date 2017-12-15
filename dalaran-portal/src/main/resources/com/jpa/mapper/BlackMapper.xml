@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dalaran.mapper.BlackMapper">
+	<resultMap id="Black" type="com.dalaran.model.Black">
+		<id column="id" property="id" />
+		<result column="optimistic" property="optimistic" />
+	</resultMap>
+
+	<sql id="commonColumn">
+			 id,
+             optimistic
+	</sql>
+
+	<update id="updateOptimistic" parameterType="com.dalaran.model.Black">
+ 		update black set optimistic = optimistic + 1
+	</update>
+
+	<update id="restoreOptimistic" parameterType="com.dalaran.model.Black">
+		update black set optimistic = 0
+	</update>
+
+ 	<select id="findById" parameterType="java.lang.String" resultMap="Black">
+     	select <include refid="commonColumn"/> from Black where id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dalaran.mapper.TransHistoryMapper">
+	<resultMap id="TransHistory" type="com.dalaran.model.TransHistory">
+		<id column="id" property="id" />
+		<result column="optimistic" property="optimistic" />
+		<result column="code" property="code" />
+		<result column="market" property="market" />
+		<result column="stock_name" property="stockName" />
+		<result column="bord_name" property="bordName" />
+		<result column="trade_num" property="tradeNum" />
+		<result column="trade_money" property="tradeMoney" />
+		<result column="open_price" property="openPrice" />
+		<result column="close_price" property="closePrice" />
+		<result column="min_price" property="minPrice" />
+		<result column="max_price" property="maxPrice" />
+		<result column="swing" property="swing" />
+		<result column="diff_rate" property="diffRate" />
+		<result column="diff_money" property="diffMoney" />
+		<result column="turnover" property="turnover" />
+		<result column="tradeDate" property="tradeDate" />
+	</resultMap>
+
+	<sql id="commonColumn">
+			 id,
+             optimistic,
+             code,
+             market,
+             stock_name,
+             bord_name,
+             trade_num,
+             trade_money,
+             open_price,
+             close_price,
+             min_price,
+             max_price,
+             swing,
+             diff_rate,
+             diff_money,
+             turnover,
+             trade_date
+	</sql>
+
+	<insert id="insert" parameterType="com.dalaran.dalaran.model.TransHistory">
+		insert into trans_history (
+		<include refid="commonColumn"/>
+		)
+		values
+			(
+			 #{id},
+			 #{optimistic},
+		   	 #{code},
+		   	 #{market},
+		   	 #{stockName},
+		   	 #{bordName},
+		   	 #{tradeNum},
+		   	 #{tradeMoney},
+		   	 #{openPrice},
+		   	 #{closePrice},
+		   	 #{minPrice},
+		   	 #{maxPrice},
+		   	 #{swing},
+		   	 #{diffRate},
+		   	 #{diffMoney},
+		   	 #{turnover},
+		     #{tradeDate}
+			)
+	</insert>
+
+	<insert id="insertList" parameterType="java.util.List">
+		insert into trans_history (
+		<include refid="commonColumn"/>)
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+		(
+ 			 #{item.id},
+			 #{item.optimistic},
+		   	 #{item.code},
+		   	 #{item.market},
+		   	 #{item.stockName},
+		   	 #{item.bordName},
+		   	 #{item.tradeNum},
+		   	 #{item.tradeMoney},
+		   	 #{item.openPrice},
+		   	 #{item.closePrice},
+		   	 #{item.minPrice},
+		   	 #{item.maxPrice},
+		   	 #{item.swing},
+		   	 #{item.diffRate},
+		   	 #{item.diffMoney},
+		   	 #{item.turnover},
+		     #{item.tradeDate}
+		)
+		</foreach>
+	</insert>
+
+
+	<select id="findByMap"  resultMap="TransHistory" parameterType="java.util.Map">
+		select
+	    <include refid="commonColumn"/>
+		from trans_history  where 1=1
+	    <if test="code != null and code != ''">
+			and code = #{code}
+	    </if>
+		<if test="tradeDateBeginDt != null and tradeDateBeginDt != ''">
+			and trade_date &gt;= #{tradeDateBeginDt}
+		</if>
+		<if test="tradeDateEndDt != null and tradeDateEndDt != ''">
+			and trade_date &lt;= #{tradeDateEndDt}
+		</if>
+		order by trade_date asc
+	</select>
+
+
+
+</mapper>
