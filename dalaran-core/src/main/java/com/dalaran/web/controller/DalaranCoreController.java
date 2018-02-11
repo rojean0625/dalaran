@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.dalaran.api.BankOrderInterface;
 import com.dalaran.model.TransOrder;
 import com.dalaran.model.mongo.SysOrd;
+import com.dalaran.mq.RojeanProducer;
 import com.dalaran.service.TransOrderService;
 import com.dalaran.service.SysOrderService;
 
@@ -27,6 +28,16 @@ public class DalaranCoreController {
 
 	@Resource
 	private TransOrderService transOrderService;
+
+	@Resource
+	private RojeanProducer producer;
+
+	@RequestMapping("producer")
+	public void producer() throws Exception{
+		logger.info("#rmq ready.");
+		producer.sendMessage("insert message");
+		logger.info("#rmq succ.");
+	}
 
 	@RequestMapping("queryTransOrder")
 	public void queryTransOrder(){

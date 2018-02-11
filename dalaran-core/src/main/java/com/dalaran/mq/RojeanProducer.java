@@ -1,6 +1,7 @@
 package com.dalaran.mq;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +9,11 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.rocketmq.client.exception.MQBrokerException;
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
+import com.alibaba.rocketmq.client.producer.MessageQueueSelector;
 import com.alibaba.rocketmq.client.producer.SendResult;
 import com.alibaba.rocketmq.client.producer.SendStatus;
 import com.alibaba.rocketmq.common.message.Message;
+import com.alibaba.rocketmq.common.message.MessageQueue;
 
 public class RojeanProducer {
 
@@ -38,7 +41,8 @@ public class RojeanProducer {
 			}
 			logger.info("Rojean MQ Send: {} -  SendStatus: {}",msg,sendResult.getSendStatus());
 		} catch (Exception e) {
-			throw new Exception("");
+			logger.error("sendMessageError:{} - {}",e,e.getMessage());
+			throw new Exception(e);
 		}
 	}
 

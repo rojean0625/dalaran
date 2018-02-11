@@ -38,6 +38,7 @@ public class RojeanMessageListenerConcurrently implements MessageListenerConcurr
 				findTopic = true;
 				// callBack
 				entry.getValue().onMessage(message);
+
 			}
 		}
 		if(!findTopic) {

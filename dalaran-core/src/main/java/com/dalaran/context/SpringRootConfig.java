@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 
 
 @Configuration
-@Import({ MariaDBConfig.class, MyBatisConfig.class,DubboConfig.class,DubboServiceConfig.class})
+@Import({ MariaDBConfig.class, MyBatisConfig.class,RojeanProducerConfig.class})
 @ComponentScan(basePackages = "com.dalaran", excludeFilters = {@Filter(Controller.class), @Filter(Configuration.class) })
 public class SpringRootConfig {
 	@Bean

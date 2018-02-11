@@ -21,6 +21,7 @@ public class TransOrderDaoImpl extends DalaranBaseMapper<TransOrder> implements 
 	public TransOrder findByCheckId(Map<String, String> map) {
 		String method= this.mapperClassName + ".findByCheckId";
 		TransOrder order = super.getSqlSession().selectOne(method, map);
+		super.getSqlSession().getMapper(TransOrderMapper.class);
 		return order;
 	}
 
