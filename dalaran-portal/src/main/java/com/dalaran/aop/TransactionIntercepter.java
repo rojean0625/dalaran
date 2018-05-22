@@ -23,7 +23,8 @@ public class TransactionIntercepter {
 	/**
 	 * 切入点，对连接点进行拦截的定义
 	 */
-	@Pointcut("execution(* com.dalaran.service.impl.TableServiceImpl.*(..))")
+	// @Pointcut("execution(* com.dalaran.service.impl.TableServiceImpl.*(..))")
+	@Pointcut("execution(* com.dalaran.service.impl.TableServiceImpl.updateTable(..))")
 	private void transactionMgr(){
 		System.out.println("Intercepter catch");
 	}
@@ -52,6 +53,8 @@ public class TransactionIntercepter {
 	public void rollBack(){
 		System.out.println("## 回滚异常。。");
 	}
+
+
 
 	@Around("transactionMgr()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable{
