@@ -1,6 +1,8 @@
 package com.dalara.gson;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.dalaran.model.Invoice;
@@ -35,7 +37,13 @@ public class GsonMain {
 		System.out.println(mapString);
 
 		//List to Json
+		List<String> s = Arrays.asList("hello", "world","A");
+		System.out.println(s.get(2));
 
+
+		Long a = new Long(1500L);
+		Long b = new Long(1500L);
+		System.out.println(a.longValue() >= b.longValue());
 	}
 
 }

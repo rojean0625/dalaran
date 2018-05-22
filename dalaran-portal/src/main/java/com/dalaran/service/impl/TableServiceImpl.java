@@ -15,7 +15,7 @@ public class TableServiceImpl implements TableService {
 	 * 连接点（joinpoint）
 	 */
 	@Override
-	public void updateTable() {
+	public void updateTable(String[] args) {
 		System.out.println("TableServiceImpl。updateTable 执行更新数据操作  update table set ..");
 	}
 

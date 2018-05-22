@@ -30,11 +30,7 @@
 	    	<version>${dalaran-model.version}</version>
 	    </dependency>
 
-		<!-- gson -->
-		<dependency>
-  			<groupId>com.google.code.gson</groupId>
-  			<artifactId>gson</artifactId>
-		</dependency>
+
 
 	    <!-- javaeeAPI -->
 		<dependency>
@@ -202,6 +198,12 @@
 		    <artifactId>xstream</artifactId>
 		</dependency>
 
+
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.8.4</version>
+		</dependency>
   </dependencies>
   <build>
     <finalName>dalaran-core</finalName>

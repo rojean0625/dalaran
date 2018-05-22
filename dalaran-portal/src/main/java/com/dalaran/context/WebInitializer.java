@@ -32,6 +32,9 @@ public class WebInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		logger.info("webinitializer onStepup");
+		logger.info("####################################3");
+		logger.info("####################################3");
+		logger.info("####################################3");
 		// 创建Spring上下文
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.register(SpringRootConfig.class);

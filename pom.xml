@@ -14,6 +14,7 @@
 	<dalaran-api.version>1.0.1</dalaran-api.version>
 	<dalaran-core.version>1.0.1</dalaran-core.version>
 	<dalaran-portal.version>1.0.1</dalaran-portal.version>
+	<dalaran-rule-version>1.0.1</dalaran-rule-version>
   </properties>
 
   <groupId>com.dalaran</groupId>
@@ -26,5 +27,6 @@
     <module>dalaran-model</module>
     <module>dalaran-core</module>
     <module>dalaran-portal</module>
+    <module>dalaran-rule</module>
   </modules>
 </project>

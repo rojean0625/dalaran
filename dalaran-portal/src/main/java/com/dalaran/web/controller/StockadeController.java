@@ -1,6 +1,8 @@
 package com.dalaran.web.controller;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dalaran.dao.BlackDao;
@@ -37,6 +40,35 @@ public class StockadeController {
 	@Resource
 	private TableService tableService;
 
+	ThreadLocal<String> result = new ThreadLocal<String>();
+	ThreadLocal<String> result2 = new ThreadLocal<String>();
+
+
+	private int count = 0;
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+	@RequestMapping("toAddCount")
+	@ResponseBody
+	String toAddCount(){
+		Thread t;
+		logger.info("Thread: "+Thread.currentThread().getId());
+		logger.info("Count-A: {}",result.get());
+		result.set("haha");
+		logger.info("Count-B: {}",result.get());
+		result.set("bianle");
+		logger.info("Count-C: {}",result.get());
+		return "OK";
+	}
+
+
+
+
 	/**
 	 * 进入页面
 	 * @param request
@@ -54,7 +86,7 @@ public class StockadeController {
 
 	@RequestMapping("doAop")
 	void doAop(){
-		tableService.updateTable();
+		tableService.updateTable(null);
 	}
 
 	/**

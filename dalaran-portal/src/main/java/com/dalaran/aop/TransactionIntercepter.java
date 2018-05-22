@@ -1,5 +1,6 @@
 package com.dalaran.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -35,7 +36,10 @@ public class TransactionIntercepter {
 
 
 	@AfterReturning("transactionMgr()")
-	public void doCloseConn(){
+	public void doCloseConn(JoinPoint joinPoint){
+		Object[] args = joinPoint.getArgs();
+		String[] arg = (String[])args[0];
+		System.out.println("####################joinpont:" + arg);
 		System.out.println("## Connection Close 关闭数据库连接");
 	}
 
