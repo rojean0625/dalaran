@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapService {
 
@@ -35,6 +37,10 @@ public class MapService {
 //		Dt d = d1;
 //		d1 = d2;
 //		System.out.println(d1.getKey());
+
+
+		Map m1 = new ConcurrentHashMap<>();
+		m1.put("1", 1);
 
 
 
