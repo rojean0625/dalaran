@@ -30,7 +30,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @EnableScheduling
 @EnableAspectJAutoProxy
 //@Import({MariaDBConfig.class,MyBatisConfig.class})
-@Import({MariaDBConfig.class,MyBatisConfig.class,RedisCacheConfig.class})
+@Import({MariaDBConfig.class,MyBatisConfig.class,DubboConfig.class,DubboClientConfig.class})
 @ComponentScan(basePackages = "com.dalaran", excludeFilters = { @Filter(Controller.class), @Filter(Configuration.class) })
 public class SpringRootConfig {
 	@Bean

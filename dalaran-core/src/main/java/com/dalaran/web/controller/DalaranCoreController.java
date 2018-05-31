@@ -29,7 +29,7 @@ public class DalaranCoreController {
 	@Resource
 	private TransOrderService transOrderService;
 
-	@Resource
+	//@Resource
 	private RojeanProducer producer;
 
 	@RequestMapping("producer")

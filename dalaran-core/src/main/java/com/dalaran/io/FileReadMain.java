@@ -29,6 +29,20 @@ public class FileReadMain {
 			result = result + info;
 		}
 		System.out.println(result);
+
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				ServerHandler handler = new ServerHandler();
+				try {
+					handler.ini();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+
+		System.out.println("x");
 	}
 
 }

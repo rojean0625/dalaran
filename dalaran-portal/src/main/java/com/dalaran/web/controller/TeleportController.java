@@ -2,7 +2,10 @@ package com.dalaran.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.dubbo.rpc.RpcContext;
 import com.dalaran.api.TeleportInterface;
 
 @Controller
@@ -22,6 +26,7 @@ public class TeleportController {
 	private Logger logger = LoggerFactory.getLogger(TeleportController.class);
 
 
+	@Resource
 	private TeleportInterface teleportInterface;
 
 	@RequestMapping("toTeleportPage")
@@ -34,10 +39,22 @@ public class TeleportController {
 		return mv;
 	}
 
-	@RequestMapping("doTeleport")
-	public void doTeleport(String location){
-		logger.info("## Teleport doTeleport");
+	@RequestMapping("doTeleport1")
+	public void doTeleport1(String location){
 		teleportInterface.toStormwind();
+		logger.info("## Teleport doTeleport1");
+	}
+
+	@RequestMapping("doTeleport2")
+	public void doTeleport2(String location) throws InterruptedException, ExecutionException{
+		String v = teleportInterface.toKenruito();
+		System.out.println("v #   " + v);
+
+		Future<Object> future= RpcContext.getContext().getFuture();
+		Object o = future.get();
+		System.out.println("v ##   " + o);
+
+		logger.info("## Teleport doTeleport2");
 	}
 
 	@RequestMapping("doUpdatePDF")

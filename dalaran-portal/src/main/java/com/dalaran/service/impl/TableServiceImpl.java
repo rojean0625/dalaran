@@ -34,7 +34,7 @@ public class TableServiceImpl implements TableService {
 	@Resource
 	private TableDao tableDao;
 
-	@Resource
+	//@Resource
 	private RedisCacheConfig config;
 
 	/**
