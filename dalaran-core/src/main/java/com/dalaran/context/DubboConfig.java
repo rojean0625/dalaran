@@ -60,7 +60,6 @@ public class DubboConfig {
 		ProtocolConfig protocolConfig = new ProtocolConfig(protocol, port);
 		protocolConfig.setThreads(5);
 		protocolConfig.setAccepts(2000);
-		protocolConfig.setSerialization("kryo");
 		return protocolConfig;
 	}
 
